@@ -1,0 +1,30 @@
+{
+  "name": "openai-title-generator",
+  "version": "2.0.2",
+  "author": "AITP",
+  "description": "Generate titles using OpenAI's GPT model",
+  "main": "index.js",
+  "dependencies": {
+    "openai": "^3.3.0"
+  },
+  "keywords": [
+    "OpenAI",
+    "Title generation",
+    "GPT model",
+    "Text generation",
+    "Content creation",
+    "Automatic titling",
+    "AIpowered titles",
+    "Creative writing",
+    "NLP-based titles",
+    "Headline generation",
+    "API integration",
+    "Creative content",
+    "Language model"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SahanKumarasiri/openai-title-generator"
+  },
+  "license": "MIT"
+}
