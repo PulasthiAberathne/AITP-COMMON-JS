@@ -26,14 +26,11 @@ app = FastAPI()
 
 PORT = 3333
 
-origins = [
-    f"http://localhost:{PORT}",
-    "https://chat.openai.com",
-]
+allowed_origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -145,4 +142,5 @@ async def startup():
 
 
 def start():
-    uvicorn.run("local_server.main:app", host="localhost", port=PORT, reload=True)
+    uvicorn.run("local_server.main:app",
+                host="localhost", port=PORT, reload=True)

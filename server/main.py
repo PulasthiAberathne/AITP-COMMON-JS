@@ -4,6 +4,7 @@ import uvicorn
 from fastapi import FastAPI, File, Form, HTTPException, Depends, Body, UploadFile
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 from loguru import logger
 
 from models.api import (
@@ -43,6 +44,16 @@ sub_app = FastAPI(
 )
 app.mount("/sub", sub_app)
 
+allowed_origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 @app.post(
     "/upsert-file",
@@ -54,7 +65,7 @@ async def upsert_file(
 ):
     try:
         metadata_obj = (
-           DocumentMetadata(source=Source.file, author=metadata)
+            DocumentMetadata(source=Source.file, author=metadata)
             if metadata
             else DocumentMetadata(source=Source.file)
         )
